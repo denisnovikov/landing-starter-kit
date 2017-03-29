@@ -1,0 +1,50 @@
+{
+    "name": "landing-starter-kit",
+    "version": "1.0.0",
+    "private": true,
+    "engines": {
+        "node": ">= 7.1.2",
+        "npm": ">= 3.10.10"
+    },
+    "description": "Репозиторий создан в помощь разработкам, которые используют gulp.js в проектах",
+    "main": "gulpfile.js",
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "clean": "./node_modules/.bin/gulp clean",
+        "develop": "./node_modules/.bin/gulp clean:develop:build && ./node_modules/.bin/gulp develop",
+        "release": "./node_modules/.bin/gulp clean:release:build && ./node_modules/.bin/gulp release"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/denisnovikov/landing-starter-kit.git"
+    },
+    "author": "Denis Novikov <dnovikov1808@gmail.com>",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/denisnovikov/landing-starter-kit/issues"
+    },
+    "homepage": "https://github.com/denisnovikov/landing-starter-kit#readme",
+    "devDependencies": {
+        "browser-sync": "^2.18.8",
+        "gulp": "^3.9.1",
+        "gulp-autoprefixer": "^3.1.1",
+        "gulp-csscomb": "^3.0.8",
+        "gulp-csso": "^3.0.0",
+        "gulp-filesize": "0.0.6",
+        "gulp-htmlmin": "^3.0.0",
+        "gulp-imagemin": "^3.2.0",
+        "gulp-minify-css": "^1.2.4",
+        "gulp-plumber": "^1.1.0",
+        "gulp-pug": "^3.3.0",
+        "gulp-rename": "^1.2.2",
+        "gulp-rigger": "^0.5.8",
+        "gulp-sass": "^3.1.0",
+        "gulp-sourcemaps": "^2.5.0",
+        "gulp-uglify": "^2.1.2",
+        "gulp-watch": "^4.3.11",
+        "imagemin-pngquant": "^5.0.0",
+        "rimraf": "^2.6.1"
+    }
+}

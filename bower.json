@@ -1,0 +1,17 @@
+{
+    "name": "landing-starter-kit",
+    "description": "Репозиторий создан в помощь разработкам, которые используют gulp.js в проектах",
+    "main": "gulpfile.js",
+    "authors": [
+        "Denis Novikov <dnovikov1808@gmail.com>"
+    ],
+    "license": "MIT",
+    "homepage": "https://github.com/denisnovikov/landing-starter-kit",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ]
+}

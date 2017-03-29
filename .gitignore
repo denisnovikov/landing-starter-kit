@@ -1,0 +1,10 @@
+# CONFIG'S TO IDE
+.idea
+.vscode
+
+# PACKAGE
+bower_components
+node_modules
+
+# OTHER
+build

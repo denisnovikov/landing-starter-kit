@@ -38,18 +38,18 @@ var path = {
         public: './build/develop/'
     },
     src: {
-        html: './src/components/Pages/**/*.pug',
-        js: './src/components/App/app.js',
-        css: './src/components/App/app.scss',
-        img: './src/components/App/images/**/*.*',
-        public: './src/components/Common/**/*.*'
+        html: './src/views/**/*.pug',
+        js: './src/components/App/App.js',
+        css: './src/components/App/App.scss',
+        img: './src/components/**/*.*',
+        public: './src/other/**/*.*'
     },
     watch: {
-        html: './src/components/**/*.pug',
-        js: './src/components/**/*.js',
-        css: './src/components/**/*.scss',
-        img: './src/components/App/images/**/*.*',
-        public: './src/components/Common/**/*.*'
+        html: './src/**/*.pug',
+        js: './src/**/*.js',
+        css: './src/**/*.scss',
+        img: './src/components/**/*.*',
+        public: './src/other/**/*.*'
     }
 };
 
@@ -87,7 +87,10 @@ gulp.task('styles:develop:build', function() {
             browsers: ['> 1%', 'last 2 versions'],
             cascade: false
         }))
-        .pipe(rename({ suffix: ".min" }))
+        .pipe(rename({
+            basename: "app",
+            suffix: ".min"
+        }))
         .pipe(size())
         .pipe(sourcemaps.write('./'))
         .pipe(gulp.dest(path.develop.css))
@@ -104,7 +107,10 @@ gulp.task('styles:release:build', function() {
         .pipe(csscomb())
         .pipe(csso())
         .pipe(cssmin())
-        .pipe(rename({ suffix: ".min" }))
+        .pipe(rename({
+            basename: "app",
+            suffix: ".min"
+        }))
         .pipe(size())
         .pipe(gulp.dest(path.release.css));
 });
@@ -115,7 +121,10 @@ gulp.task('js:develop:build', function() {
         .pipe(rigger())
         .pipe(sourcemaps.init())
         .pipe(uglify())
-        .pipe(rename({ suffix: ".min" }))
+        .pipe(rename({
+            basename: "app",
+            suffix: ".min"
+        }))
         .pipe(size())
         .pipe(sourcemaps.write("./"))
         .pipe(gulp.dest(path.develop.js))
@@ -126,7 +135,10 @@ gulp.task('js:release:build', function() {
     gulp.src(path.src.js)
         .pipe(rigger())
         .pipe(uglify())
-        .pipe(rename({ suffix: ".min" }))
+        .pipe(rename({
+            basename: "app",
+            suffix: ".min"
+        }))
         .pipe(size())
         .pipe(gulp.dest(path.release.js));
 });

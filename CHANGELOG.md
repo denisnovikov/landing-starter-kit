@@ -1,16 +1,25 @@
-## Landing Starter Kit Change Log
- 
+# Landing Starter Kit Change Log
+
 Все зафиксированные изменения проекта будут описаны в этом документе.
+
+[v1.1.1][v1.1.1]
+
+> 2017-04-06
+
+- Добавлена папка текущих задач внутри проекта;
+- Мелкие изменения в CHANGELOG.md;
+- Мелкие изменения в README.md
 
 [v1.1.0][v1.1.0]
 
-> 2017-04-04 
+> 2017-04-04
 
-- Стили, скрипты и шаблон дополнительных компонентов теперь подключаются из папки компонента;
-- Добавлены данные для примера использования;
 - Главные страницы строятся в отдельной папке;
 - Добавлен `robot.txt`, который по-умолчанию скрывает проект от индексации поисковыми роботами;
+- Добавлены данные для примера использования;
+- Стили, скрипты и шаблон дополнительных компонентов теперь подключаются из папки компонента;
 - Мелкие исправления...
 
-[unreleased]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.0.0...develop
+[unreleased]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.0.0...v1.1.0

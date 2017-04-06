@@ -22,45 +22,47 @@ var gulp = require('gulp'),
 
 var path = {
     release: {
-        main: './build/release/',
-        html: './build/release/',
-        js: './build/release/assets/scripts/',
-        css: './build/release/assets/styles/',
-        img: './build/release/assets/images/',
-        public: './build/release/'
+        html   : './build/release/',
+        fonts  : './build/release/assets/fonts/',
+        images : './build/release/assets/images/',
+        scripts: './build/release/assets/scripts/',
+        styles : './build/release/assets/styles/',
+        public : './build/release/'
     },
     develop: {
-        main: './build/develop/',
-        html: './build/develop/',
-        js: './build/develop/assets/scripts/',
-        css: './build/develop/assets/styles/',
-        img: './build/develop/assets/images/',
-        public: './build/develop/'
+        html   : './build/develop/',
+        fonts  : './build/develop/assets/fonts/',
+        images : './build/develop/assets/images/',
+        scripts: './build/develop/assets/scripts/',
+        styles : './build/develop/assets/styles/',
+        public : './build/develop/'
     },
     src: {
-        html: './src/views/**/*.pug',
-        js: './src/components/App/App.js',
-        css: './src/components/App/App.scss',
-        img: './src/components/**/*.*',
-        public: './src/other/**/*.*'
+        html   : './src/views/**/*.pug',
+        fonts  : './src/fonts/**/*.*',
+        images : './src/images/**/*.*',
+        scripts: './src/components/App/App.js',
+        styles : './src/components/App/App.scss',
+        public : './src/other/**/*.*'
     },
     watch: {
-        html: './src/**/*.pug',
-        js: './src/**/*.js',
-        css: './src/**/*.scss',
-        img: './src/components/**/*.*',
-        public: './src/other/**/*.*'
+        html   : './src/**/*.pug',
+        fonts  : './src/fonts/**/*.*',
+        images : './src/images/**/*.*',
+        scripts: './src/components/**/*.js',
+        styles : './src/components/**/*.scss',
+        public : './src/other/**/*.*'
     }
 };
 
 var config = {
     server: {
-        baseDir: path.develop.main
+        baseDir: path.develop.public
     },
-    tunnel: true,
-    host: 'localhost',
-    port: 3000,
-    logPrefix: "SERVER"
+    tunnel     : true,
+    host       : 'localhost',
+    port       : 3000,
+    logPrefix  : "SERVER"
 };
 
 // HTML
@@ -80,87 +82,98 @@ gulp.task('html:release:build', function() {
 
 // Styles
 gulp.task('styles:develop:build', function() {
-    gulp.src(path.src.css)
+    gulp.src(path.src.styles)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
         .pipe(autoprefixer({
             browsers: ['> 1%', 'last 2 versions'],
-            cascade: false
+            cascade : false
         }))
         .pipe(rename({
             basename: "app",
-            suffix: ".min"
+            suffix  : ".min"
         }))
         .pipe(size())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(path.develop.css))
+        .pipe(gulp.dest(path.develop.styles))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('styles:release:build', function() {
-    gulp.src(path.src.css)
+    gulp.src(path.src.styles)
         .pipe(sass())
         .pipe(autoprefixer({
             browsers: ['> 1%', 'last 2 versions'],
-            cascade: false
+            cascade : false
         }))
         .pipe(csscomb())
         .pipe(csso())
         .pipe(cssmin())
         .pipe(rename({
             basename: "app",
-            suffix: ".min"
+            suffix  : ".min"
         }))
         .pipe(size())
-        .pipe(gulp.dest(path.release.css));
+        .pipe(gulp.dest(path.release.styles));
 });
 
 // Scripts
-gulp.task('js:develop:build', function() {
-    gulp.src(path.src.js)
+gulp.task('scripts:develop:build', function() {
+    gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(sourcemaps.init())
         .pipe(uglify())
         .pipe(rename({
             basename: "app",
-            suffix: ".min"
+            suffix  : ".min"
         }))
         .pipe(size())
         .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest(path.develop.js))
+        .pipe(gulp.dest(path.develop.scripts))
         .pipe(reload({ stream: true }));
 });
 
-gulp.task('js:release:build', function() {
-    gulp.src(path.src.js)
+gulp.task('scripts:release:build', function() {
+    gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(uglify())
         .pipe(rename({
             basename: "app",
-            suffix: ".min"
+            suffix  : ".min"
         }))
         .pipe(size())
-        .pipe(gulp.dest(path.release.js));
+        .pipe(gulp.dest(path.release.scripts));
 });
 
 // Images
 gulp.task('images:develop:build', function() {
-    gulp.src(path.src.img)
+    gulp.src(path.src.images)
         .pipe(imagemin())
-        .pipe(gulp.dest(path.develop.img))
+        .pipe(gulp.dest(path.develop.images))
         .pipe(reload({ stream: true }));
 });
 
 gulp.task('images:release:build', function() {
-    gulp.src(path.src.img)
+    gulp.src(path.src.images)
         .pipe(imagemin({
             interlaced: true,
             progressive: true,
             optimizationLevel: 5,
             svgoPlugins: [{ removeViewBox: true }]
         }))
-        .pipe(gulp.dest(path.release.img))
+        .pipe(gulp.dest(path.release.images))
         .pipe(reload({ stream: true }));
+});
+
+// Fonts
+gulp.task('fonts:develop:build', function() {
+    gulp.src(path.src.fonts)
+        .pipe(gulp.dest(path.develop.fonts));
+});
+
+gulp.task('fonts:release:build', function() {
+    gulp.src(path.src.fonts)
+        .pipe(gulp.dest(path.release.fonts));
 });
 
 // Other
@@ -176,11 +189,11 @@ gulp.task('public:release:build', function() {
 
 // Clear
 gulp.task('clean:develop:build', function(cb) {
-    rimraf(path.develop.main, cb);
+    rimraf(path.develop.public, cb);
 });
 
 gulp.task('clean:release:build', function(cb) {
-    rimraf(path.release.main, cb);
+    rimraf(path.release.public, cb);
 });
 
 // Watching
@@ -188,14 +201,17 @@ gulp.task('develop:watch', function() {
     watch([path.watch.html], function(event, cb) {
         gulp.start('html:develop:build');
     });
-    watch([path.watch.css], function(event, cb) {
+    watch([path.watch.styles], function(event, cb) {
         gulp.start('styles:develop:build');
     });
-    watch([path.watch.js], function(event, cb) {
-        gulp.start('js:develop:build');
+    watch([path.watch.scripts], function(event, cb) {
+        gulp.start('scripts:develop:build');
     });
-    watch([path.watch.img], function(event, cb) {
+    watch([path.watch.images], function(event, cb) {
         gulp.start('images:develop:build');
+    });
+    watch([path.watch.fonts], function(event, cb) {
+        gulp.start('fonts:develop:build');
     });
     watch([path.watch.public], function(event, cb) {
         gulp.start('public:build');
@@ -210,20 +226,24 @@ gulp.task('develop:webserver', function() {
 // Build
 gulp.task('develop:build', [
     'html:develop:build',
-    'styles:develop:build',
-    'js:develop:build',
+    'fonts:develop:build',
     'images:develop:build',
+    'scripts:develop:build',
+    'styles:develop:build',
     'public:develop:build'
 ]);
 
 gulp.task('release:build', [
     'html:release:build',
-    'styles:release:build',
-    'js:release:build',
+    'fonts:release:build',
     'images:release:build',
+    'scripts:release:build',
+    'styles:release:build',
     'public:release:build'
 ]);
 
 gulp.task('develop', ['develop:build', 'develop:webserver', 'develop:watch']);
 gulp.task('release', ['release:build']);
+
+gulp.task('default', ['develop']);
 gulp.task('clean', ['clean:develop:build', 'clean:release:build']);

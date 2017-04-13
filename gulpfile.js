@@ -89,6 +89,9 @@ gulp.task('styles:develop:build', function() {
             browsers: ['> 1%', 'last 2 versions'],
             cascade : false
         }))
+        .pipe(csscomb())
+        .pipe(csso())
+        .pipe(cssmin())
         .pipe(rename({
             basename: "app",
             suffix  : ".min"

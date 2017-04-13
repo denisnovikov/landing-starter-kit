@@ -1,0 +1,67 @@
+// Simples
+@mixin hover {
+  &:hover {
+    @content
+  }
+}
+
+@mixin focus {
+  &:focus {
+    @content
+  }
+}
+
+@mixin active {
+  &:active {
+    @content
+  }
+}
+
+@mixin visited {
+  &:visited {
+    @content
+  }
+}
+
+@mixin before {
+  &:before, &::before {
+    @content
+  }
+}
+
+@mixin after {
+  &:after, &::after {
+    @content
+  }
+}
+
+// Comb
+@mixin active-hover {
+  &:active, &:hover {
+    @content
+  }
+}
+
+@mixin active-focus{
+  &:active, &:focus {
+    @content
+  }
+}
+
+@mixin hover-focus {
+  &:hover, &:focus {
+    @content
+  }
+}
+
+@mixin hover-focus-active {
+  &:hover, &:focus, &:active {
+    @content
+  }
+}
+
+@mixin before-after {
+  &:before, &::before, &:after, &::after {
+    @content
+  }
+}

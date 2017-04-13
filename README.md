@@ -31,6 +31,22 @@ git clone https://github.com/denisnovikov/landing-starter-kit.git
 cd landing-starter-kit
 ```
 
+## Начало работы
+
+Для начала работы с репозиторием доступы вызовы **develop** и **release**. Более подробно описано в `gulpfile.js`.
+
+**Запуск develop-версии**
+
+```npm
+npm run-script develop
+```
+
+**Запуск release-версии**
+
+```npm
+npm run-script release
+```
+
 ## Прочее
 
 **[TASKS][1]** » **[CHANGELOG][2]** » **[MIT][3]**

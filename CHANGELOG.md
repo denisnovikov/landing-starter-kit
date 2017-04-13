@@ -49,8 +49,8 @@
 * Стили, скрипты и шаблон дополнительных компонентов теперь подключаются из папки компонента
 * Мелкие исправления...
 
-[coming-soon]: https://github.com/denisnovikov/landing-starter-kit/tree/develop
-[v1.1.3]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.1.2...v1.1.3
-[v1.1.2]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.1.1...v1.1.2
-[v1.1.1]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.1.0...v1.1.1
-[v1.1.0]: https://github.com/denisnovikov/landing-starter-kit/compare/v1.0.0...v1.1.0
+[coming-soon]: https://github.com/xenonplanet/landing-starter-kit/tree/develop
+[v1.1.3]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.2...v1.1.3
+[v1.1.2]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.1...v1.1.2
+[v1.1.1]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.0...v1.1.1
+[v1.1.0]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.0.0...v1.1.0

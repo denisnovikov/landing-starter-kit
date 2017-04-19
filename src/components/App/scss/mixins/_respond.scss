@@ -1,0 +1,12 @@
+@mixin respond-to($media) {
+    @if $media == lg {
+        @media (min-width: 1200px) { @content; } }
+    @else if $media == md {
+        @media (min-width: 992px) { @content; } }
+    @else if $media == sm {
+        @media (min-width: 768px) { @content; } }
+    @else if $media == xs {
+        @media (min-width: 576px) { @content; } }
+    @else if $media == screen {
+        @media screen { @content; } }
+}

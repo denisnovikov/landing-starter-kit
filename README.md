@@ -12,7 +12,7 @@ gulp: 3.9.1
 
 ## Приступая к работе
 
-**Проверка версий:**
+### Проверка версий
 
 Убедитесь, что необходимые программы на устройстве соответствуют требованиям репозитория. Для этого в терминале linux выполните:
 
@@ -24,10 +24,10 @@ node -v
 npm -v
 ```
 
-**Клонирование репозитория:**
+### Клонирование репозитория
 
 ```console
-git clone https://github.com/denisnovikov/landing-starter-kit.git
+git clone https://github.com/xenonplanet/landing-starter-kit.git
 cd landing-starter-kit
 ```
 
@@ -35,13 +35,13 @@ cd landing-starter-kit
 
 Для начала работы с репозиторием доступы вызовы **develop** и **release**. Более подробно описано в `gulpfile.js`.
 
-**Запуск develop-версии**
+### Запуск develop-версии
 
 ```npm
 npm run-script develop
 ```
 
-**Запуск release-версии**
+### Запуск release-версии
 
 ```npm
 npm run-script release

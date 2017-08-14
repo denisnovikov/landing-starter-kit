@@ -104,44 +104,32 @@ gulp.task('html:release:build', function() {
         .pipe(gulp.dest(path.build.html));
 });
 
-// Styles
+// Styles Build Tasks
 gulp.task('styles:develop:build', function() {
     gulp.src(path.src.styles)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['> 1%', 'last 2 versions'],
-            cascade : false
-        }))
-        .pipe(csscomb())
+        .pipe(importCss())
+        .pipe(autoprefixer(config.autoprefixer))
         .pipe(csso())
-        .pipe(cssmin())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(path.develop.styles))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.styles))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('styles:release:build', function() {
     gulp.src(path.src.styles)
         .pipe(sass())
-        .pipe(autoprefixer({
-            browsers: ['> 1%', 'last 2 versions'],
-            cascade : false
-        }))
+        .pipe(importCss())
+        .pipe(autoprefixer(config.autoprefixer))
         .pipe(csscomb())
         .pipe(csso())
         .pipe(cssmin())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
-        .pipe(gulp.dest(path.release.styles));
+        .pipe(gulp.dest(path.build.styles));
 });
 
 // Scripts

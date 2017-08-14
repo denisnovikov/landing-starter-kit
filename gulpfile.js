@@ -182,7 +182,7 @@ gulp.task('clean:build', function(cb) {
     rimraf(path.root, cb);
 });
 
-// Watching
+// Watching Build Tasks
 gulp.task('develop:watch', function() {
     watch([path.watch.html], function(event, cb) {
         gulp.start('html:develop:build');
@@ -197,7 +197,7 @@ gulp.task('develop:watch', function() {
         gulp.start('images:develop:build');
     });
     watch([path.watch.fonts], function(event, cb) {
-        gulp.start('fonts:develop:build');
+        gulp.start('fonts:build');
     });
     watch([path.watch.public], function(event, cb) {
         gulp.start('public:build');

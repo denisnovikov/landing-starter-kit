@@ -1,4 +1,4 @@
-# Landing Starter Kit Change Log
+# Журнал изменений Landing Starter Kit
 
 Все зафиксированные изменения проекта будут описаны в этом документе.
 

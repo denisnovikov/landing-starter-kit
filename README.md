@@ -1,56 +1,48 @@
-# Введение
+# landing-starter-kit
 
-Репозиторий создан в помощь разработкам, которые используют gulp.js в проектах.
+Repository for the development of a SPA using the library gulp.js
 
-## Требования
+## Requirements
 
-```text
-node: 7.1.2 и старше
-npm : 3.10.10 и старше
-gulp: 3.9.1
+Check your version of **node**:
+
+```bash
+$ node -v
+v7.10.1
 ```
 
-## Приступая к работе
+Check your version of **npm**:
 
-### Проверка версий
+```bash
+$ npm -v
+4.2.0
+```
+## Quick start
 
-Убедитесь, что необходимые программы на устройстве соответствуют требованиям репозитория. Для этого в терминале linux выполните:
+First you need to clone the repository and go the directory for this:
 
-```console
-# node js
-node -v
-
-# node package manager
-npm -v
+```bash
+$ git clone https://github.com/xenonplanet/landing-starter-kit.git
+$ cd ./landing-starter-kit/
 ```
 
-### Клонирование репозитория
+To install the required packages, run:
 
-```console
-git clone https://github.com/xenonplanet/landing-starter-kit.git
-cd landing-starter-kit
+```bash
+$ yarn
+or
+$ npm i .
 ```
 
-## Начало работы
+Create the first review:
 
-Для начала работы с репозиторием доступы вызовы **develop** и **release**. Более подробно описано в `gulpfile.js`.
-
-### Запуск develop-версии
-
-```npm
-npm run-script develop
+```bash
+$ rm -rf ./.git && git init && git add . && git ci -m "Initial commit"
 ```
 
-### Запуск release-версии
+## Other
 
-```npm
-npm run-script release
-```
+**[CHANGELOG][1]** » **[MIT][2]**
 
-## Прочее
-
-**[TASKS][1]** » **[CHANGELOG][2]** » **[MIT][3]**
-
-[1]: ./todo/repo.tasks
-[2]: ./CHANGELOG.md
-[3]: ./LICENSE
+[1]: ./CHANGELOG_EN.md
+[2]: ./LICENSE

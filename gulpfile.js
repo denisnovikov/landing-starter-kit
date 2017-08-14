@@ -68,6 +68,11 @@ var config = {
     autoprefixer: {
         browsers: ['> 1%', 'last 2 versions'],
         cascade : false
+    },
+
+    rename: {
+        basename: "app",
+        suffix: ".min"
     }
 };
 

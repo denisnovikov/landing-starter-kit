@@ -8,7 +8,15 @@
     },
     "description": "Repository for the development of a SPA using the library gulp.js",
     "main": "gulpfile.js",
-    "scripts": {},
+    "scripts": {
+        "clean": "./node_modules/.bin/gulp clean",
+        "predevelop": "yarn run clean",
+        "develop": "./node_modules/.bin/gulp develop",
+        "prerelease": "yarn run clean",
+        "release": "./node_modules/.bin/gulp release",
+        "prestart": "yarn run clean",
+        "start": "./node_modules/.bin/gulp"
+    },
     "repository": "git@github.com:xenonplanet/landing-starter-kit.git",
     "author": "Denis Novikov <dnovikov1808@gmail.com>",
     "license": "MIT",

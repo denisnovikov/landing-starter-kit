@@ -1,15 +1,16 @@
 'use strict';
 
 var gulp = require('gulp'),
+    autoprefixer = require('gulp-autoprefixer'),
     browserSync = require('browser-sync'),
+    concat = require('gulp-concat'),
     csscomb = require('gulp-csscomb'),
-    cssmin = require('gulp-minify-css'),
+    cssmin = require('gulp-clean-css'),
     csso = require('gulp-csso'),
     htmlmin = require('gulp-htmlmin'),
     imagemin = require('gulp-imagemin'),
+    importCss = require('gulp-import-css'),
     pug = require('gulp-pug'),
-    plumber = require('gulp-plumber'),
-    autoprefixer = require('gulp-autoprefixer'),
     reload = browserSync.reload,
     rename = require('gulp-rename'),
     rigger = require('gulp-rigger'),
@@ -21,185 +22,167 @@ var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 var path = {
-    release: {
-        html   : './build/release/',
-        fonts  : './build/release/assets/fonts/',
-        images : './build/release/assets/images/',
-        scripts: './build/release/assets/scripts/',
-        styles : './build/release/assets/styles/',
-        public : './build/release/'
+    build: {
+        html   : './build/',
+        fonts  : './build/asset/fonts/',
+        images : './build/asset/images/',
+        scripts: './build/asset/scripts/',
+        styles : './build/asset/styles/',
+        public : './build/'
     },
-    develop: {
-        html   : './build/develop/',
-        fonts  : './build/develop/assets/fonts/',
-        images : './build/develop/assets/images/',
-        scripts: './build/develop/assets/scripts/',
-        styles : './build/develop/assets/styles/',
-        public : './build/develop/'
-    },
+
     src: {
-        html   : './src/views/**/*.pug',
+        html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
         images : './src/images/**/*.*',
-        scripts: './src/components/App/App.js',
-        styles : './src/components/App/App.scss',
-        public : './src/other/**/*.*'
+        scripts: './src/scripts/app.js',
+        styles : './src/styles/app.scss',
+        public : './src/public/**/*.*'
     },
+
     watch: {
-        html   : './src/**/*.pug',
+        html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
         images : './src/images/**/*.*',
-        scripts: './src/components/**/*.js',
-        styles : './src/components/**/*.scss',
-        public : './src/other/**/*.*'
-    }
+        scripts: './src/scripts/**/*.js',
+        styles : './src/styles/**/*.scss',
+        public : './src/public/**/*.*'
+    },
+
+    root       : './build'
 };
 
 var config = {
-    server: {
-        baseDir: path.develop.public
+    webserver: {
+        server: { baseDir: path.root },
+        tunnel: true,
+        host: 'localhost',
+        port: 9000,
+        logPrefix: "SERVER"
     },
-    tunnel     : true,
-    host       : 'localhost',
-    port       : 3000,
-    logPrefix  : "SERVER"
+
+    reload: {
+        stream: true
+    },
+
+    autoprefixer: {
+        browsers: ['> 1%', 'last 2 versions'],
+        cascade : false
+    },
+
+    rename: {
+        basename: "app",
+        suffix: ".min"
+    },
+
+    imagemin: {
+        interlaced: true,
+        progressive: true,
+        optimizationLevel: 5,
+        svgoPlugins: [{
+            removeViewBox: true
+        }]
+    },
+
+    htmlmin: {
+        collapseWhitespace: true
+    }
 };
 
-// HTML
+// Html Build Tasks
 gulp.task('html:develop:build', function() {
     gulp.src(path.src.html)
         .pipe(pug())
-        .pipe(gulp.dest(path.develop.html))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.html))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('html:release:build', function() {
     gulp.src(path.src.html)
         .pipe(pug())
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(path.release.html));
+        .pipe(htmlmin(config.htmlmin))
+        .pipe(gulp.dest(path.build.html));
 });
 
-// Styles
+// Styles Build Tasks
 gulp.task('styles:develop:build', function() {
     gulp.src(path.src.styles)
         .pipe(sourcemaps.init())
         .pipe(sass().on('error', sass.logError))
-        .pipe(autoprefixer({
-            browsers: ['> 1%', 'last 2 versions'],
-            cascade : false
-        }))
-        .pipe(csscomb())
+        .pipe(importCss())
+        .pipe(autoprefixer(config.autoprefixer))
         .pipe(csso())
-        .pipe(cssmin())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(path.develop.styles))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.styles))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('styles:release:build', function() {
     gulp.src(path.src.styles)
         .pipe(sass())
-        .pipe(autoprefixer({
-            browsers: ['> 1%', 'last 2 versions'],
-            cascade : false
-        }))
+        .pipe(importCss())
+        .pipe(autoprefixer(config.autoprefixer))
         .pipe(csscomb())
         .pipe(csso())
         .pipe(cssmin())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
-        .pipe(gulp.dest(path.release.styles));
+        .pipe(gulp.dest(path.build.styles));
 });
 
-// Scripts
+// Scripts Build Tasks
 gulp.task('scripts:develop:build', function() {
     gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
         .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest(path.develop.scripts))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.scripts))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('scripts:release:build', function() {
     gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(uglify())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
-        .pipe(gulp.dest(path.release.scripts));
+        .pipe(gulp.dest(path.build.scripts));
 });
 
-// Images
+// Images Build Tasks
 gulp.task('images:develop:build', function() {
     gulp.src(path.src.images)
-        .pipe(imagemin())
-        .pipe(gulp.dest(path.develop.images))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.images))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('images:release:build', function() {
     gulp.src(path.src.images)
-        .pipe(imagemin({
-            interlaced: true,
-            progressive: true,
-            optimizationLevel: 5,
-            svgoPlugins: [{ removeViewBox: true }]
-        }))
-        .pipe(gulp.dest(path.release.images))
-        .pipe(reload({ stream: true }));
+        .pipe(imagemin(config.imagemin))
+        .pipe(gulp.dest(path.build.images));
 });
 
-// Fonts
-gulp.task('fonts:develop:build', function() {
+// Other Build Tasks
+gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.develop.fonts));
+        .pipe(gulp.dest(path.build.fonts));
 });
 
-gulp.task('fonts:release:build', function() {
-    gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.release.fonts));
-});
-
-// Other
-gulp.task('public:develop:build', function() {
+gulp.task('public:build', function() {
     gulp.src(path.src.public)
-        .pipe(gulp.dest(path.develop.public));
+        .pipe(gulp.dest(path.build.public));
 });
 
-gulp.task('public:release:build', function() {
-    gulp.src(path.src.public)
-        .pipe(gulp.dest(path.release.public));
+// Clear Tasks
+gulp.task('clean:build', function(cb) {
+    rimraf(path.root, cb);
 });
 
-// Clear
-gulp.task('clean:develop:build', function(cb) {
-    rimraf(path.develop.public, cb);
-});
-
-gulp.task('clean:release:build', function(cb) {
-    rimraf(path.release.public, cb);
-});
-
-// Watching
+// Watching Build Tasks
 gulp.task('develop:watch', function() {
     watch([path.watch.html], function(event, cb) {
         gulp.start('html:develop:build');
@@ -214,39 +197,38 @@ gulp.task('develop:watch', function() {
         gulp.start('images:develop:build');
     });
     watch([path.watch.fonts], function(event, cb) {
-        gulp.start('fonts:develop:build');
+        gulp.start('fonts:build');
     });
     watch([path.watch.public], function(event, cb) {
         gulp.start('public:build');
     });
 });
 
-// WebServer
+// WebServer Tasks
 gulp.task('develop:webserver', function() {
-    browserSync(config);
+    browserSync(config.webserver);
 });
 
-// Build
+// Builder Tasks
 gulp.task('develop:build', [
     'html:develop:build',
-    'fonts:develop:build',
+    'fonts:build',
     'images:develop:build',
     'scripts:develop:build',
     'styles:develop:build',
-    'public:develop:build'
+    'public:build'
 ]);
 
 gulp.task('release:build', [
     'html:release:build',
-    'fonts:release:build',
+    'fonts:build',
     'images:release:build',
     'scripts:release:build',
     'styles:release:build',
-    'public:release:build'
+    'public:build'
 ]);
 
+gulp.task('clean', ['clean:build']);
 gulp.task('develop', ['develop:build', 'develop:webserver', 'develop:watch']);
 gulp.task('release', ['release:build']);
-
 gulp.task('default', ['develop']);
-gulp.task('clean', ['clean:develop:build', 'clean:release:build']);

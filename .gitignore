@@ -1,10 +1,10 @@
-# CONFIG'S TO IDE
+# development environment
 .idea
 .vscode
 
-# PACKAGE
+# packages installed
 bower_components
 node_modules
 
-# OTHER
+# other
 build

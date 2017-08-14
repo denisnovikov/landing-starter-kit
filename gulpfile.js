@@ -47,7 +47,9 @@ var path = {
         scripts: './src/scripts/**/*.js',
         styles : './src/styles/**/*.scss',
         public : './src/public/**/*.*'
-    }
+    },
+
+    root       : './build'
 };
 
 var config = {

@@ -7,6 +7,14 @@
 * Добавление документации о работе с CSS-препроцессором scss (он же, sass)
 * Добавление документации о работе с HTML-шаблонизатором pug (он же, jade)
 
+## [v2.0.1]
+
+> 2017-08-14
+
+* Переименованы рабочие папки и файлы **[3e1f6c6](https://github.com/xenonplanet/landing-starter-kit/commit/3e1f6c64fba98284e171b8d9d8d7183c37c747a8)**
+* Добавлен пакет 'normalize.css' **[07eb6ed](https://github.com/xenonplanet/landing-starter-kit/commit/07eb6ed3d6196c52b9dd88dc7fa62d5491ad696d)**
+* Прочие мелкие изменения...
+
 ## [v2.0.0]
 
 > 2017-08-14
@@ -59,6 +67,7 @@
 * Мелкие исправления...
 
 [coming-soon]: https://github.com/xenonplanet/landing-starter-kit/tree/develop
+[v2.0.1]: https://github.com/xenonplanet/landing-starter-kit/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.3...v2.0.0
 [v1.1.3]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.1...v1.1.2

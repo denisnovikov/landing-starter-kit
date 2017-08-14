@@ -32,13 +32,14 @@ var path = {
     },
 
     src: {
-        html   : './src/views/**/*.pug',
+        html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
         images : './src/images/**/*.*',
-        scripts: './src/components/App/App.js',
-        styles : './src/components/App/App.scss',
-        public : './src/other/**/*.*'
+        scripts: './src/scripts/app.js',
+        styles : './src/styles/app.scss',
+        public : './src/public/**/*.*'
     },
+
     watch: {
         html   : './src/**/*.pug',
         fonts  : './src/fonts/**/*.*',

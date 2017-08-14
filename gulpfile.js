@@ -82,6 +82,10 @@ var config = {
         svgoPlugins: [{
             removeViewBox: true
         }]
+    },
+
+    htmlmin: {
+        collapseWhitespace: true
     }
 };
 

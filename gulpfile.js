@@ -41,12 +41,12 @@ var path = {
     },
 
     watch: {
-        html   : './src/**/*.pug',
+        html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
         images : './src/images/**/*.*',
-        scripts: './src/components/**/*.js',
-        styles : './src/components/**/*.scss',
-        public : './src/other/**/*.*'
+        scripts: './src/scripts/**/*.js',
+        styles : './src/styles/**/*.scss',
+        public : './src/public/**/*.*'
     }
 };
 

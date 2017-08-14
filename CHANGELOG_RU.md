@@ -7,6 +7,15 @@
 * Добавление документации о работе с CSS-препроцессором scss (он же, sass)
 * Добавление документации о работе с HTML-шаблонизатором pug (он же, jade)
 
+## [v2.0.0]
+
+> 2017-08-14
+
+* Удалена локальная папка с задачами (/todo/) **[2eb925f](https://github.com/xenonplanet/landing-starter-kit/commit/2eb925f076ede39c96f1c225be91acb57e957d88)**
+* Обновление описания проекта (readme.md, package.json и bower.json) **[6018739](https://github.com/xenonplanet/landing-starter-kit/commit/60187397a69e647754966e44fe31ede6cd9e267c)**, **[a6108ca](https://github.com/xenonplanet/landing-starter-kit/commit/a6108cad25d97f2fbba01c78cefa7e18ff079b6f)** и **[1a5c691](https://github.com/xenonplanet/landing-starter-kit/commit/1a5c6919edd023f1051b5bcc021dced3ca3a4d15)**
+* Обновление модулей и настроек gulpfile.js **[5c092e6](https://github.com/xenonplanet/landing-starter-kit/commit/5c092e60f3a16723debef4405a02d7e85ea5efe7)** и **[a6108ca](https://github.com/xenonplanet/landing-starter-kit/commit/a6108cad25d97f2fbba01c78cefa7e18ff079b6f)**
+* Прочие мелкие изменения...
+
 ## [v1.1.3]
 
 > 2017-04-13
@@ -50,6 +59,7 @@
 * Мелкие исправления...
 
 [coming-soon]: https://github.com/xenonplanet/landing-starter-kit/tree/develop
+[v2.0.0]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.3...v2.0.0
 [v1.1.3]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.2...v1.1.3
 [v1.1.2]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.1...v1.1.2
 [v1.1.1]: https://github.com/xenonplanet/landing-starter-kit/compare/v1.1.0...v1.1.1

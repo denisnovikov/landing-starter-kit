@@ -59,6 +59,10 @@ var config = {
         host: 'localhost',
         port: 9000,
         logPrefix: "SERVER"
+    },
+
+    reload: {
+        stream: true
     }
 };
 

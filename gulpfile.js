@@ -172,15 +172,9 @@ gulp.task('fonts:build', function() {
         .pipe(gulp.dest(path.build.fonts));
 });
 
-// Other
-gulp.task('public:develop:build', function() {
+gulp.task('public:build', function() {
     gulp.src(path.src.public)
-        .pipe(gulp.dest(path.develop.public));
-});
-
-gulp.task('public:release:build', function() {
-    gulp.src(path.src.public)
-        .pipe(gulp.dest(path.release.public));
+        .pipe(gulp.dest(path.build.public));
 });
 
 // Clear

@@ -22,22 +22,15 @@ var gulp = require('gulp'),
     watch = require('gulp-watch');
 
 var path = {
-    release: {
-        html   : './build/release/',
-        fonts  : './build/release/assets/fonts/',
-        images : './build/release/assets/images/',
-        scripts: './build/release/assets/scripts/',
-        styles : './build/release/assets/styles/',
-        public : './build/release/'
+    build: {
+        html   : './build/',
+        fonts  : './build/asset/fonts/',
+        images : './build/asset/images/',
+        scripts: './build/asset/scripts/',
+        styles : './build/asset/styles/',
+        public : './build/'
     },
-    develop: {
-        html   : './build/develop/',
-        fonts  : './build/develop/assets/fonts/',
-        images : './build/develop/assets/images/',
-        scripts: './build/develop/assets/scripts/',
-        styles : './build/develop/assets/styles/',
-        public : './build/develop/'
-    },
+
     src: {
         html   : './src/views/**/*.pug',
         fonts  : './src/fonts/**/*.*',

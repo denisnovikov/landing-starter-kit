@@ -53,13 +53,13 @@ var path = {
 };
 
 var config = {
-    server: {
-        baseDir: path.develop.public
-    },
-    tunnel     : true,
-    host       : 'localhost',
-    port       : 3000,
-    logPrefix  : "SERVER"
+    webserver: {
+        server: { baseDir: path.root },
+        tunnel: true,
+        host: 'localhost',
+        port: 9000,
+        logPrefix: "SERVER"
+    }
 };
 
 // HTML

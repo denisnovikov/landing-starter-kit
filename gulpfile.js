@@ -132,32 +132,25 @@ gulp.task('styles:release:build', function() {
         .pipe(gulp.dest(path.build.styles));
 });
 
-// Scripts
+// Scripts Build Tasks
 gulp.task('scripts:develop:build', function() {
     gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(sourcemaps.init())
-        .pipe(uglify())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
         .pipe(sourcemaps.write("./"))
-        .pipe(gulp.dest(path.develop.scripts))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.scripts))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('scripts:release:build', function() {
     gulp.src(path.src.scripts)
         .pipe(rigger())
         .pipe(uglify())
-        .pipe(rename({
-            basename: "app",
-            suffix  : ".min"
-        }))
+        .pipe(rename(config.rename))
         .pipe(size())
-        .pipe(gulp.dest(path.release.scripts));
+        .pipe(gulp.dest(path.build.scripts));
 });
 
 // Images

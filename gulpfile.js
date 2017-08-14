@@ -73,6 +73,15 @@ var config = {
     rename: {
         basename: "app",
         suffix: ".min"
+    },
+
+    imagemin: {
+        interlaced: true,
+        progressive: true,
+        optimizationLevel: 5,
+        svgoPlugins: [{
+            removeViewBox: true
+        }]
     }
 };
 

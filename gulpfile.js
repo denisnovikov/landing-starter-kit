@@ -153,24 +153,17 @@ gulp.task('scripts:release:build', function() {
         .pipe(gulp.dest(path.build.scripts));
 });
 
-// Images
+// Images Build Tasks
 gulp.task('images:develop:build', function() {
     gulp.src(path.src.images)
-        .pipe(imagemin())
-        .pipe(gulp.dest(path.develop.images))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.images))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('images:release:build', function() {
     gulp.src(path.src.images)
-        .pipe(imagemin({
-            interlaced: true,
-            progressive: true,
-            optimizationLevel: 5,
-            svgoPlugins: [{ removeViewBox: true }]
-        }))
-        .pipe(gulp.dest(path.release.images))
-        .pipe(reload({ stream: true }));
+        .pipe(imagemin(config.imagemin))
+        .pipe(gulp.dest(path.build.images));
 });
 
 // Fonts

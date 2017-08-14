@@ -166,15 +166,10 @@ gulp.task('images:release:build', function() {
         .pipe(gulp.dest(path.build.images));
 });
 
-// Fonts
-gulp.task('fonts:develop:build', function() {
+// Other Build Tasks
+gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.develop.fonts));
-});
-
-gulp.task('fonts:release:build', function() {
-    gulp.src(path.src.fonts)
-        .pipe(gulp.dest(path.release.fonts));
+        .pipe(gulp.dest(path.build.fonts));
 });
 
 // Other

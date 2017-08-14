@@ -204,9 +204,9 @@ gulp.task('develop:watch', function() {
     });
 });
 
-// WebServer
+// WebServer Tasks
 gulp.task('develop:webserver', function() {
-    browserSync(config);
+    browserSync(config.webserver);
 });
 
 // Build

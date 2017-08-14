@@ -89,19 +89,19 @@ var config = {
     }
 };
 
-// HTML
+// Html Build Tasks
 gulp.task('html:develop:build', function() {
     gulp.src(path.src.html)
         .pipe(pug())
-        .pipe(gulp.dest(path.develop.html))
-        .pipe(reload({ stream: true }));
+        .pipe(gulp.dest(path.build.html))
+        .pipe(reload(config.reload));
 });
 
 gulp.task('html:release:build', function() {
     gulp.src(path.src.html)
         .pipe(pug())
-        .pipe(htmlmin({ collapseWhitespace: true }))
-        .pipe(gulp.dest(path.release.html));
+        .pipe(htmlmin(config.htmlmin))
+        .pipe(gulp.dest(path.build.html));
 });
 
 // Styles

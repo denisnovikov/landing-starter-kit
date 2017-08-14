@@ -209,23 +209,23 @@ gulp.task('develop:webserver', function() {
     browserSync(config.webserver);
 });
 
-// Build
+// Builder Tasks
 gulp.task('develop:build', [
     'html:develop:build',
-    'fonts:develop:build',
+    'fonts:build',
     'images:develop:build',
     'scripts:develop:build',
     'styles:develop:build',
-    'public:develop:build'
+    'public:build'
 ]);
 
 gulp.task('release:build', [
     'html:release:build',
-    'fonts:release:build',
+    'fonts:build',
     'images:release:build',
     'scripts:release:build',
     'styles:release:build',
-    'public:release:build'
+    'public:build'
 ]);
 
 gulp.task('develop', ['develop:build', 'develop:webserver', 'develop:watch']);

@@ -228,8 +228,7 @@ gulp.task('release:build', [
     'public:build'
 ]);
 
-gulp.task('release', ['release:build']);
-
 gulp.task('default', ['develop']);
 gulp.task('clean', ['clean:build']);
 gulp.task('develop', ['develop:build', 'develop:webserver', 'develop:watch']);
+gulp.task('release', ['release:build']);

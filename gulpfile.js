@@ -177,13 +177,9 @@ gulp.task('public:build', function() {
         .pipe(gulp.dest(path.build.public));
 });
 
-// Clear
-gulp.task('clean:develop:build', function(cb) {
-    rimraf(path.develop.public, cb);
-});
-
-gulp.task('clean:release:build', function(cb) {
-    rimraf(path.release.public, cb);
+// Clear Tasks
+gulp.task('clean:build', function(cb) {
+    rimraf(path.root, cb);
 });
 
 // Watching

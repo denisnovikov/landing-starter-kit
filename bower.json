@@ -14,5 +14,8 @@
     "test",
     "tests"
   ],
-  "private": true
+  "private": true,
+  "dependencies": {
+    "normalize-css": "normalize.css#^7.0.0"
+  }
 }

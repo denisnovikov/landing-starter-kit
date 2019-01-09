@@ -18,13 +18,13 @@
         "prestart": "yarn run clean",
         "start": "./node_modules/.bin/gulp"
     },
-    "repository": "git@github.com:xenonplanet/landing-starter-kit.git",
+    "repository": "git@github.com:denisnovikov/landing-starter-kit.git",
     "author": "Denis Novikov <dnovikov1808@gmail.com>",
     "license": "MIT",
     "bugs": {
-        "url": "https://github.com/xenonplanet/landing-starter-kit/issues"
+        "url": "https://github.com/denisnovikov/landing-starter-kit/issues"
     },
-    "homepage": "https://github.com/xenonplanet/landing-starter-kit#readme",
+    "homepage": "https://github.com/denisnovikov/landing-starter-kit#readme",
     "devDependencies": {
         "browser-sync": "^2.18.13",
         "gulp": "^4.0.0",

@@ -8,7 +8,6 @@ var gulp = require('gulp'),
     cssmin = require('gulp-clean-css'),
     csso = require('gulp-csso'),
     htmlmin = require('gulp-htmlmin'),
-    imagemin = require('gulp-imagemin'),
     importCss = require('gulp-import-css'),
     pug = require('gulp-pug'),
     reload = browserSync.reload,
@@ -25,7 +24,6 @@ var path = {
     build: {
         html   : './build/',
         fonts  : './build/asset/fonts/',
-        images : './build/asset/images/',
         scripts: './build/asset/scripts/',
         styles : './build/asset/styles/',
         public : './build/'
@@ -34,7 +32,6 @@ var path = {
     src: {
         html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
-        images : './src/images/**/*.*',
         scripts: './src/scripts/app.js',
         styles : './src/styles/app.scss',
         public : './src/public/**/*.*'
@@ -43,7 +40,6 @@ var path = {
     watch: {
         html   : './src/pages/**/*.pug',
         fonts  : './src/fonts/**/*.*',
-        images : './src/images/**/*.*',
         scripts: './src/scripts/**/*.js',
         styles : './src/styles/**/*.scss',
         public : './src/public/**/*.*'
@@ -73,15 +69,6 @@ var config = {
     rename: {
         basename: "app",
         suffix: ".min"
-    },
-
-    imagemin: {
-        interlaced: true,
-        progressive: true,
-        optimizationLevel: 5,
-        svgoPlugins: [{
-            removeViewBox: true
-        }]
     },
 
     htmlmin: {
@@ -153,19 +140,6 @@ gulp.task('scripts:release:build', function() {
         .pipe(gulp.dest(path.build.scripts));
 });
 
-// Images Build Tasks
-gulp.task('images:develop:build', function() {
-    gulp.src(path.src.images)
-        .pipe(gulp.dest(path.build.images))
-        .pipe(reload(config.reload));
-});
-
-gulp.task('images:release:build', function() {
-    gulp.src(path.src.images)
-        .pipe(imagemin(config.imagemin))
-        .pipe(gulp.dest(path.build.images));
-});
-
 // Other Build Tasks
 gulp.task('fonts:build', function() {
     gulp.src(path.src.fonts)
@@ -193,9 +167,6 @@ gulp.task('develop:watch', function() {
     watch([path.watch.scripts], function(event, cb) {
         gulp.start('scripts:develop:build');
     });
-    watch([path.watch.images], function(event, cb) {
-        gulp.start('images:develop:build');
-    });
     watch([path.watch.fonts], function(event, cb) {
         gulp.start('fonts:build');
     });
@@ -213,7 +184,6 @@ gulp.task('develop:webserver', function() {
 gulp.task('develop:build', [
     'html:develop:build',
     'fonts:build',
-    'images:develop:build',
     'scripts:develop:build',
     'styles:develop:build',
     'public:build'
@@ -222,7 +192,6 @@ gulp.task('develop:build', [
 gulp.task('release:build', [
     'html:release:build',
     'fonts:build',
-    'images:release:build',
     'scripts:release:build',
     'styles:release:build',
     'public:build'

@@ -3,8 +3,9 @@
     "version": "2.0.1",
     "private": true,
     "engines": {
-        "node": "<=7.10.1",
-        "npm": "<=4.2.0"
+        "node": "<=10.15.0",
+        "npm": "<=6.4.1",
+        "yarn": "<=1.12.3"
     },
     "description": "Repository for the development of a SPA using the library gulp.js",
     "main": "gulpfile.js",
